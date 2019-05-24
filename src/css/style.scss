@@ -1,0 +1,74 @@
+div {
+  //font-size: 40px;
+}
+body {
+  //background-color: #bbbbbb;
+}
+.myDan {
+  width: 900px;
+  height: 900px;
+  //margin:0 auto;
+  background-color: black;
+  z-index: 1;
+  position: relative;
+}
+.barrage {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  flex-wrap: nowrap;
+  align-items: center;
+  word-break: keep-all;
+  white-space: nowrap;
+  border-radius: 20px;
+  padding: 0 20px;
+  padding-left:15px;
+  transform: translateX(-300px);
+  opacity: 0.8;
+  will-change:transform;
+  position: absolute;
+  user-select: none;
+  pointer-events: auto;
+  text-shadow: 0ch;
+  z-index: 0;
+  .header{
+    width:30px;
+    height: 30px;
+    border-radius: 50%;
+    border:1px solid white;
+    margin-right: 5px;
+  }
+  .text{
+    text-decoration: none;
+    color: white;
+  }
+}
+.pause{
+  animation-play-state: paused;
+}
+// .move {
+//   position: relative;
+//   animation: mymove 5s 1;
+// }
+// @keyframes mymove {
+//   from {
+//     left: -200px;
+//   }
+//   to {
+//     left: 1000px;
+//   }
+// }
+
+// @function strip-units($number){
+// 	@return $number / ($number * 0 + 1);
+// }
+// @for $i from 1 through 20{
+//   .move-#{$i} {
+// 	position: relative;
+// 	left:-200px;
+// 	animation: mymove;
+// 	animation-duration:1s*0+$i;
+// 	animation-timing-function:linear;
+// 	animation-iteration-count:1;
+//   }
+// }
