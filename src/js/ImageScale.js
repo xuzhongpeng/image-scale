@@ -1,11 +1,11 @@
 /**
- * 本js用于web端图片缩放，传参img父级元素elem及能够表示屏幕宽度的元素parentDom
+ * 本js用于web端图片缩放，传参img元素及能够表示屏幕宽度的元素parentDom
  */
 function log(message){
   document.querySelector('#good').innerHTML=document.querySelector('#good').innerHTML+'<br/>'+message
 }
 export default class ImageScale {
-  constructor() {
+  constructor(elem) {
     this.wrapX; //可视区域宽度
     this.wrapY; //可视区域高度
     this.element; //图片dom
@@ -20,22 +20,19 @@ export default class ImageScale {
     this.finger //false单击true多击
     this.beforeX=0 //当图片移动之前translate的x值
     this.beforeY=0 //当图片移动之前translate的y值
-  }
-  init(params) {
-    params = params || {};
-    if (!params.elem && !params.elems) {
+    
+    let params={
+      elem:elem
+    }
+    if (!params.elem) {
       throw new Error("elem or elems is necessary property");
     }
     //初始化可是区域宽高
-    this.wrapX = params.maskDom
-      ? document.querySelector(params.maskDom).offsetWidth
-      : window.screen.availWidth || document.body.offsetWidth;
-    this.wrapY = params.maskDom
-      ? document.querySelector(params.maskDom).offsetHeight
-      : window.screen.availHeight || document.body.offsetHeight;
+    this.wrapX =  window.screen.availWidth || document.body.offsetWidth;
+    this.wrapY =  window.screen.availHeight || document.body.offsetHeight;
     //初始化事件
     if (params.elem) {
-      this.element =
+      this.element =typeof(params.elem)==='object'?params.elem:
         document.querySelector(params.elem)
          ||document.getElementsByClassName(params.elem)[0]
          ||document.getElementById(params.elem);
@@ -249,5 +246,6 @@ function getTranslate(x, y) {
 function getPage(event, page) {
   return support.touch ? event.changedTouches[0][page] : event[page];
 }
-const imageScale = new ImageScale();
-export { imageScale };
+// const imageScale = new ImageScale();
+
+
